@@ -1,7 +1,7 @@
 # Mult-rotors encryption machine
 
 ## Concept
-an encryption based on the `ord()` method and a random rotor generation
+An encryption based on the `ord()` method and a random rotor generation
 100 characters (`string.printable`) for each rotors 
 ## Usage
 ``` 
