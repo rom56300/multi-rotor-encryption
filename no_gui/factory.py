@@ -31,7 +31,7 @@ def a2r(i: int):
 
 
 def save_config(dic: dict, name: str):
-    np.save(name + '.npy', dic)
+    np.save('configs/' + name + '.npy', dic)
     print(Fore.LIGHTYELLOW_EX + "Configuration Saved")
 
 
@@ -44,56 +44,6 @@ class Rotor:
 
     def turn(self):
         self.position += 1
-
-    def permute(self, char: str = None):
-        if char is not None:
-            pos = self.position
-            perm = list(self.permutation)
-            letter = perm[pos]
-            new = ord(char) + ord(letter)
-            if new > 1112064: new -= 1112064
-            new_letter = chr(new)
-            self.turn()
-            if self.position == len(string.printable):
-                self.position = 0
-            return new_letter
-
-    def reverse(self, char: str = None):
-        if char is not None:
-            pos = self.position
-            perm = list(self.permutation)
-            letter = perm[pos]
-            old = ord(char) - ord(letter)
-            if old < 0: old += 1112064
-            old_letter = chr(old)
-            self.turn()
-            if self.position == len(string.printable):
-                self.position = 0
-            return old_letter
-
-    def bpermute(self, byte: int = None):
-        if byte is not None:
-            pos = self.position
-            perm = list(self.permutation)
-            letter = perm[pos]
-            new = byte + ord(letter)
-            if new >= 256: new -= 256
-            self.turn()
-            if self.position == len(string.printable):
-                self.position = 0
-            return new
-
-    def breverse(self, byte: bytes = None):
-        if byte is not None:
-            pos = self.position
-            perm = list(self.permutation)
-            letter = perm[pos]
-            old = byte - ord(letter)
-            if old < 0: old += 256
-            self.turn()
-            if self.position == len(string.printable):
-                self.position = 0
-            return old
 
 
 if __name__ == '__main__':
