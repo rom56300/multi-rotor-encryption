@@ -62,13 +62,13 @@ def init():
 
 
 def save_config(dic: dict, name: str):
-    np.save(name + '.npy', dic)
+    np.save('configs/' + name + '.npy', dic)
     print(Fore.LIGHTYELLOW_EX + "Configuration Saved")
 
 
 def load_config(name: str):
     try:
-        dic = np.load(name + '.npy', allow_pickle=True)
+        dic = np.load('configs/' + name + '.npy', allow_pickle=True)
         print(Fore.LIGHTYELLOW_EX + "Configuration Loaded")
         return dic
 
